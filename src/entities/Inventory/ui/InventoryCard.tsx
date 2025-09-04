@@ -4,7 +4,7 @@ import { ReactNode } from "react"
 
 interface Props {
     inventory: Inventory,
-    children: ReactNode
+    children?: ReactNode
 }
 
 export const InventoryCard = ({inventory, children}: Props) => {
