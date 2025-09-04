@@ -1,8 +1,8 @@
 import { useRemoteAPI } from "@/shared/api/useRemoteAPI"
 
 const URLS = {
-    LOGIN: 'https://final-mq82.onrender.com/Account/Login',
-    REGISTER: 'https://final-mq82.onrender.com/Account/Register'
+    LOGIN: 'http://localhost:8000/Account/Login',
+    REGISTER: 'http://localhost:8000/Account/Register'
 }
 
 export const useAccountAPI = () => {

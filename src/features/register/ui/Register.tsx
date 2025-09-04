@@ -1,5 +1,9 @@
 import { useAccountAPI } from "@/entities/User/api/useAccountAPI"
+import { Alert } from "@/shared/ui/Alert/Alert"
 import { Button } from "@/shared/ui/Button/Button"
+import { Form } from "@/shared/ui/Form/Form"
+import { Input } from "@/shared/ui/Input/Input"
+import { Loader } from "@/shared/ui/Loader/Loader"
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react"
 
 export const Register = () => {
@@ -7,36 +11,35 @@ export const Register = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [isLoading, setLoading] = useState<boolean>(false);
+    const [isError, setError] = useState<boolean>(false);
+
     const {registerAPI} = useAccountAPI();
-    const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log("Username changed")
-        setUsername(e.target.value);
-    }
-    const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log("Password changed")
-        setPassword(e.target.value);
-    }
-    const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log("Email changed")
-        setEmail(e.target.value);
-    }
-    const onSubmitForm = (e: FormEvent) => {
-        e.preventDefault()
-    }
+
     const onClickLogin = async (e: MouseEvent<HTMLButtonElement>) => {
+        setError(false)
         setLoading(true)
-        const response = await registerAPI(usermame, email, password);
-        if(response) {
-            setLoading(false)
+        try {
+            const response = await registerAPI(usermame, email, password); 
+            if (response.ok) {
+            }
+            else {
+                setError(true);
+            }
+            setLoading(false);
+        } catch {
+            setLoading(false);
+            setError(true)
         }
     }
     return (
-        <form className="flex flex-col border-2 p-2" onSubmit={onSubmitForm}>
-                <input className="border-2 m-2" placeholder="Username" type="text" value={usermame} onChange={onChangeUsername}/>
-                <input className="border-2 m-2" placeholder="Email" type="text" value={email} onChange={onChangeEmail}/>
-                <input className="border-2 m-2" placeholder="Password" type="password" value={password} onChange={onChangePassword} />
-                <Button label="Register" onClick={onClickLogin} />
-                {isLoading && <>Loading...</>}
-        </form>
+        <Form>
+            <Input placeholder="Username" type="text" label="Your username" value={usermame} setValue={setUsername}></Input>
+            <Input placeholder="Email" type="text" label="Your email" value={email} setValue={setEmail}></Input>
+            <Input placeholder="Password" type="text" label="Your password" value={password} setValue={setPassword}></Input>
+            <Button label="Login" onClick={onClickLogin} />
+            {isLoading && <Loader/>}
+            {isError && <Alert label="Error"/>}
+        </Form>
+
     )
 }

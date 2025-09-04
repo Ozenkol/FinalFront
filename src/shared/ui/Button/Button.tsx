@@ -17,12 +17,12 @@ interface Props {
 
 
 export const Button = ({variant, size, label, onClick}: Props) => {
-    const shared = "m-2"
+    const shared = "mx-auto mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
     const primary = "bg-blue-300 p-2"
 
     return (
-        <div className={shared}>
-            <button onClick={onClick} className={primary}>
+        <div>
+            <button onClick={onClick} className={shared}>
                 {label}
             </button>
         </div>
