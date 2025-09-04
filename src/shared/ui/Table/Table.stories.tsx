@@ -2,6 +2,11 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { fn } from 'storybook/test';
 import { Table } from './Table';
+import { TableHead } from '../TableHead/TableHead';
+import { TableRow } from '../TableRow/TableRow';
+import { TableCell } from '../TableCell/TableCell';
+import { TableBody } from '../TableBody/TableBody';
+import { TableContainer } from '../TableContainer/TableContainer';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -32,32 +37,38 @@ export const Primary: Story = {
   },
   render() {
     return (
-        <Table>
-            <thead>
-                <tr>
-                <th>Song</th>
-                <th>Artist</th>
-                <th>Year</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>1961</td>
-                </tr>
-                <tr>
-                <td>Witchy Woman</td>
-                <td>The Eagles</td>
-                <td>1972</td>
-                </tr>
-                <tr>
-                <td>Shining Star</td>
-                <td>Earth, Wind, and Fire</td>
-                <td>1975</td>
-                </tr>
-            </tbody>
+      <TableContainer>
+                <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell data='Header 1'></TableCell>
+                <TableCell data='Header 2'></TableCell>
+                <TableCell data='Header 3'></TableCell>
+                <TableCell data='Header 4'></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+                <TableRow>
+                  <TableCell data='Header 1'></TableCell>
+                  <TableCell data='Header 2'></TableCell>
+                  <TableCell data='Header 3'></TableCell>
+                  <TableCell data='Header 4'></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell data='Header 1'></TableCell>
+                  <TableCell data='Header 2'></TableCell>
+                  <TableCell data='Header 3'></TableCell>
+                  <TableCell data='Header 4'></TableCell>
+                </TableRow>                <TableRow>
+                  <TableCell data='Header 1'></TableCell>
+                  <TableCell data='Header 2'></TableCell>
+                  <TableCell data='Header 3'></TableCell>
+                  <TableCell data='Header 4'></TableCell>
+                </TableRow>
+              </TableBody>
         </Table>
+      </TableContainer>
+
     )
   }
 };

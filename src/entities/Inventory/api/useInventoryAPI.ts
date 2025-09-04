@@ -1,10 +1,12 @@
 import { useRemoteAPI } from "@/shared/api/useRemoteAPI";
 
 const URLS = {
-    USER_INVENTORIES: 'http://localhost:8000/Inventory/GetUserInventoryList',
-    INVENTORY: (id: string) => `http://localhost:8000/Inventory/GetInventory/${id}`,
-    CREATE_INVENTORY: "http://localhost:8000/Inventory/CreateInventory",
-    UPDATE: (inventory: Inventory)  => `http://localhost:8000/Inventory/GetInventory/${inventory.id}`
+    USER_INVENTORIES: `${process.env.NEXT_PUBLIC_API_URL}/Inventory/GetUserInventoryList`,
+    INVENTORY: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}/Inventory/GetInventory/${id}`,
+    CREATE_INVENTORY: `${process.env.NEXT_PUBLIC_API_URL}/Inventory/CreateInventory`,
+    UPDATE: (inventory: Inventory)  => `${process.env.NEXT_PUBLIC_API_URL}//Inventory/GetInventory/${inventory.id}`,
+
+    INVENTORY_FIELDS: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}//Inventory/GetInventory/${id}`,
 }
 
 export const useInventoryAPI = () => {

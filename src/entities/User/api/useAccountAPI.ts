@@ -1,8 +1,8 @@
 import { useRemoteAPI } from "@/shared/api/useRemoteAPI"
 
 const URLS = {
-    LOGIN: 'http://localhost:8000/Account/Login',
-    REGISTER: 'http://localhost:8000/Account/Register'
+    LOGIN: `${process.env.NEXT_PUBLIC_API_URL}/Account/Login`,
+    REGISTER: `${process.env.NEXT_PUBLIC_API_URL}/Account/Register`
 }
 
 export const useAccountAPI = () => {

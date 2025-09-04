@@ -42,7 +42,7 @@ const InventoriesPage = () => {
                     <AddInventory />
                     {isLoading && <Loader />}
                     {isError && <Alert label="You can't acess to inventory list"/>}
-                    {inventories.map(i => <InventoryCard inventory={i} children={null} />)}
+                    {inventories.map(i => <InventoryCard key={i.id} inventory={i} children={null} />)}
                 </>
             }
  
