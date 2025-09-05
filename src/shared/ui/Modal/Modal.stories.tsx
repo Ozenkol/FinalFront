@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { fn } from 'storybook/test';
 import { Modal } from './Modal';
+import { useState } from 'react';
+import { Button } from '../Button/Button';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -23,18 +25,20 @@ const meta = {
 } satisfies Meta<typeof Modal>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Modal>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
-    args: {
-        children: null
-    },
     render() {
+        const [isOpen, setOpen] = useState<boolean>(false);
         return (
-            <Modal>
-                Lorem ipsum, dolor sit amet consectetur 
-            </Modal>
+            <>
+              <Button label='Open' onClick={() => setOpen(!isOpen)}/>
+              <Modal isOpen={isOpen} setOpen={setOpen}>
+                  Lorem ipsum, dolor sit amet consectetur 
+              </Modal>        
+            </>
+
         )
     }
 };

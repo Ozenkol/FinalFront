@@ -3,3 +3,8 @@ interface Inventory {
     title: string,
     description: string
 }
+
+interface InventoryState {
+    items: Inventory[]
+  }
+  
