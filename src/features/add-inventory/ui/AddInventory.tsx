@@ -8,15 +8,14 @@ import { ChangeEvent, FormEvent, useState } from "react"
 export const AddInventory = () => {
     const {createInventory} = useInventoryAPI();
     const [title, setTitle] = useState<string>('')
-    const onChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
-    }
+    const [isOpen, setOpen] = useState<boolean>(false);
+
     const onClick = (e: FormEvent) => {
         createInventory(title);
     }
     return (
         <>
-            <Modal>
+            <Modal isOpen={isOpen} setOpen={setOpen}>
                 <Form>
                     <Input label="Inventory title" value={title} setValue={setTitle}  />
                     <Button onClick={onClick} label="Add" />
