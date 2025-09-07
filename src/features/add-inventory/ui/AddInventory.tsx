@@ -1,4 +1,6 @@
 import { useInventoryAPI } from "@/entities/Inventory/api/useInventoryAPI";
+import { Inventory } from "@/entities/Inventory/model/types";
+import { useInventoryStore } from "@/entities/Inventory/store/useInventoryStore";
 import { Button } from "@/shared/ui/Button/Button";
 import { Form } from "@/shared/ui/Form/Form";
 import { Input } from "@/shared/ui/Input/Input";
@@ -10,11 +12,26 @@ import { MdCancel } from "react-icons/md";
 
 export const AddInventory = () => {
     const {createInventory} = useInventoryAPI();
+    const {addInventory} = useInventoryStore()
     const [title, setTitle] = useState<string>('')
     const [isOpen, setOpen] = useState<boolean>(false);
 
-    const onClick = (e: FormEvent) => {
-        createInventory(title);
+    const onClick = async (e: FormEvent) => {
+        const fetchData = async () => {
+            try {
+                const createdInventory = await createInventory(title);
+                if (!createdInventory.ok) {
+
+                }
+                const json = await createdInventory.json();
+    
+                addInventory(json);
+            } catch {
+            }
+          }
+        setOpen(false)
+        setTitle('')
+        fetchData()
     }
     return (
         <>

@@ -1,7 +1,10 @@
 import { useInventoryAPI } from "@/entities/Inventory/api/useInventoryAPI";
+import { Inventory } from "@/entities/Inventory/model/types";
+import { useInventoryStore } from "@/entities/Inventory/store/useInventoryStore";
 import { InventoryCard } from "@/entities/Inventory/ui/InventoryCard";
 import { useAuthStore } from "@/entities/User/storage/useAuthStorage";
 import { AddInventory } from "@/features/add-inventory/ui/AddInventory";
+import { DeleteInventory } from "@/features/delete-inventory/ui/DeleteInventory";
 import { Alert } from "@/shared/ui/Alert/Alert";
 import { Container } from "@/shared/ui/Container/Container";
 import { Loader } from "@/shared/ui/Loader/Loader";
@@ -13,7 +16,7 @@ const InventoriesPage = () => {
     const {isAuthenticated, checkAuth} = useAuthStore()
 
     const {getUserInventoryList} = useInventoryAPI()
-    const [inventories, setInventories] = useState<Inventory[]>([])
+    const {inventories, addInventory, setInventories} = useInventoryStore()
     const [isLoading, setLoading] = useState<boolean>(false);
     const [isError, setError] = useState<boolean>(false);
 
@@ -42,8 +45,8 @@ const InventoriesPage = () => {
                 setError(true)
             }
           }
-        fetchData().catch(console.error);;
-        ;
+        fetchData().catch(console.error);
+        
     }, [])
 
     return (
@@ -55,7 +58,9 @@ const InventoriesPage = () => {
                         <AddInventory />
                         {isLoading && <Loader />}
                         {isError && <Alert label="You can't acess to inventory list"/>}
-                        {inventories.map(i => <InventoryCard key={i.id} inventory={i}/>)}
+                        {inventories.map(i => <InventoryCard key={i.id} inventory={i}> 
+                                <DeleteInventory id={i.id}></DeleteInventory>
+                            </InventoryCard> )}
                     </>
                 }
             </Container>
