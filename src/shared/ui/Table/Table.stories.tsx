@@ -38,32 +38,32 @@ export const Primary: Story = {
   render() {
     return (
       <TableContainer>
-                <Table>
+          <Table>
             <TableHead>
               <TableRow>
-                <TableCell data='Header 1'></TableCell>
-                <TableCell data='Header 2'></TableCell>
-                <TableCell data='Header 3'></TableCell>
-                <TableCell data='Header 4'></TableCell>
+                <TableCell>Heading 1</TableCell>
+                <TableCell>Heading 1</TableCell>
+                <TableCell>Heading 1</TableCell>
+                <TableCell>Heading 1</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
                 <TableRow>
-                  <TableCell data='Header 1'></TableCell>
-                  <TableCell data='Header 2'></TableCell>
-                  <TableCell data='Header 3'></TableCell>
-                  <TableCell data='Header 4'></TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell data='Header 1'></TableCell>
-                  <TableCell data='Header 2'></TableCell>
-                  <TableCell data='Header 3'></TableCell>
-                  <TableCell data='Header 4'></TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
                 </TableRow>                <TableRow>
-                  <TableCell data='Header 1'></TableCell>
-                  <TableCell data='Header 2'></TableCell>
-                  <TableCell data='Header 3'></TableCell>
-                  <TableCell data='Header 4'></TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
+                  <TableCell>Data</TableCell>
                 </TableRow>
               </TableBody>
         </Table>

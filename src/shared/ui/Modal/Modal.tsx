@@ -11,7 +11,7 @@ export const Modal = ({children, isOpen, setOpen}: Props) => {
     return (
         <>
             {isOpen && 
-            <div className="fixed inset-0 backdrop-blur-2xl">
+            <div className="fixed inset-0 backdrop-blur-2xl justify-center align-middle">
                 <div className="inset-2">
                     {children}
                 </div> 

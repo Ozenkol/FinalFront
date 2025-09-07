@@ -1,10 +1,11 @@
 import { ReactNode, useEffect, useRef, useState } from "react"
 
 interface Props {
+    id?: string,
     children: ReactNode
 }
 
-export const TableRow = ({children}: Props) => {
+export const TableRow = ({id, children}: Props) => {
     const ref = useRef<HTMLTableRowElement>(null)
     const [isBody, setBody] = useState<boolean>(false)
     useEffect(() => {

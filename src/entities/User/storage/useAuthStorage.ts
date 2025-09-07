@@ -10,7 +10,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     checkAuth: () => {
       const token = Cookies.get('.AspNetCore.Application.Id')
       if (token) {
-        // optionally decode JWT or fetch user from API
         set({ isAuthenticated: true })
       } else {
         set({ isAuthenticated: false, user: null })

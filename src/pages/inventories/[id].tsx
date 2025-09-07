@@ -1,3 +1,4 @@
+import { Container } from "@/shared/ui/Container/Container";
 import { useRouter } from "next/router";
 
 const Post = () => {
@@ -5,10 +6,9 @@ const Post = () => {
     const { id } = router.query; // Access the 'id' from the URL
   
     return (
-      <div>
-        <h1>Ineventory ID: {id}</h1>
-        {/* Fetch and display content for the post with this ID */}
-      </div>
+      <Container>
+        <h1 className="text-3xl font-bold text-center">Inventory products</h1>
+      </Container>
     );
   };
   

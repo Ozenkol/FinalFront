@@ -6,6 +6,7 @@ import { Button } from "@/shared/ui/Button/Button"
 import { Form } from "@/shared/ui/Form/Form"
 import { Input } from "@/shared/ui/Input/Input"
 import { Loader } from "@/shared/ui/Loader/Loader"
+import Link from "next/link"
 import router from "next/router"
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react"
 
@@ -28,7 +29,7 @@ export const Login = () => {
             if (response.ok) {
                 setUser(response.json() as unknown as User)
                 checkAuth();
-                router.push('/')
+                router.push('/success')
             }
             else {
                 setError(true);
@@ -42,9 +43,16 @@ export const Login = () => {
     }
     return (
         <Form>
+            <h2 className="text-3xl font-bold text-center mb-2">Login</h2>
             <Input placeholder="Username" type="text" label="Your username" value={usermame} setValue={setUsername}></Input>
             <Input placeholder="Password" type="text" label="Your password" value={password} setValue={setPassword}></Input>
             <Button label="Login" onClick={onClickLogin} />
+            <div className="p-8">
+                <p className="text-gray-700">
+                    Don&apos;t have account? <Link href="/registration" className="text-blue-600 underline hover:text-blue-800">Register</Link>
+                </p>
+            </div>
+
             {isLoading && <Loader/>}
             {isError && <Alert label="Error"/>}
         </Form>

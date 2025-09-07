@@ -9,7 +9,7 @@ export const Form = ({children}: Props) => {
         e.preventDefault()
     }
     return (
-        <form onSubmit={onSubmit} className="max-w-sm mx-auto p-4 bg-amber-200 rounded-2xl">
+        <form onSubmit={onSubmit} className="max-w-sm mx-auto p-4 bg-gray-200 rounded-lg shadow-lg">
             {children}
         </form>
     )

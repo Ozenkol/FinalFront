@@ -1,24 +1,17 @@
 import { useRemoteAPI } from "@/shared/api/useRemoteAPI"
 
 const URLS = {
-    INVENTORY_PRODUCT_LIST: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}//Inventory/CreateInventory`
+    INVENTORY_PRODUCT_LIST: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}/api/inventories/${id}/products`,
+    CREATE_PRODUCT: `${process.env.NEXT_PUBLIC_API_URL}/api/inventories/{inventoryId}/products`,
+
 }
 
 export const useProductAPI = () => {
     const {get, post, remove} = useRemoteAPI();
 
-    const getProducts = <T>(id: string) => get(URLS.INVENTORY_PRODUCT_LIST(id))
-    .then(
-        res => {
-            if (!res.ok) {
-                throw new Error("Error");
-            } 
-            return res.json() as T;
-        }
-    )
-    .catch((e) => {
-        throw e;
-    })
+    const getInventoryProducts = (id: string) => {
+        return get(URLS.INVENTORY_PRODUCT_LIST(id))
+    } 
 
-    return {getProducts}
+    return {getInventoryProducts}
 }

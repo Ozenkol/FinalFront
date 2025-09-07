@@ -1,5 +1,5 @@
 export interface User {
-    userName: string
+    username: string
 }
 
 export interface AuthState {

@@ -5,9 +5,11 @@ import { Button } from "@/shared/ui/Button/Button"
 import { Card } from "@/shared/ui/Card/Card"
 import { usePathname } from "next/navigation"
 import router from "next/router"
+import { useEffect } from "react"
 
 const Landing = () => {
-    const {user} = useAuthStore()
+    const {isAuthenticated} = useAuthStore()
+
     return (
         <div className="min-h-screen flex flex-col">
             <header className="flex justify-between items-center px-8 py-4 bg-white shadow">
@@ -17,7 +19,7 @@ const Landing = () => {
                             <h1 className="text-xl font-semibold">ItransitionCMS</h1>
                         </a>
                     </div>
-                    {user ? <>Hello {user.userName}</> : <></>}
+                    {isAuthenticated ? <>Hello new user</> : <></>}
                 </nav>
             </header>      
             <main className="flex-1 flex flex-col justify-center items-center text-center p-8">

@@ -47,6 +47,7 @@ const InventoriesPage = () => {
     }, [])
 
     return (
+        <div className="flex mx-2 justify-center">
             <Container>
                 <h1 className="text-3xl font-bold text-center">Inventories</h1>
                 {isError && <Alert label="You can't acess to inventory list"/>}
@@ -58,6 +59,7 @@ const InventoriesPage = () => {
                     </>
                 }
             </Container>
+        </div>
     )
 }
 
