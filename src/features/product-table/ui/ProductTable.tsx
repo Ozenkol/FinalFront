@@ -69,13 +69,13 @@ export const ProductTable = ({id}: Props) => {
                                 <TableRow>
                                     <TableCell>Title</TableCell>
                                     <TableCell>Description</TableCell>
-                                    {products[0] && products[0].fields.map(f => <TableCell>{f.name}</TableCell>)}
+                                    {products[0] && products[0].fields.map(f => <TableCell key={f.id}>{f.name}</TableCell>)}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {
                                     products.map(p => 
-                                        <ProductRaw product={p} />
+                                        <ProductRaw key={p.id} product={p} />
                                     )
                                 }
                             </TableBody>

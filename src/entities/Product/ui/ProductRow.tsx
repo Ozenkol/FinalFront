@@ -11,7 +11,7 @@ export const ProductRaw = ({product}: Props) => {
         <TableRow>
             <TableCell>{product.title}</TableCell>
             <TableCell>{product.description}</TableCell>
-            {product.fields.map(f => <TableCell>{f.value}</TableCell>)}
+            {product.fields.map(f => <TableCell key={f.id}>{f.value}</TableCell>)}
         </TableRow>
     )
 }

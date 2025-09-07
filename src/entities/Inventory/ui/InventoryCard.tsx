@@ -1,6 +1,7 @@
 import { Card } from "@/shared/ui/Card/Card"
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react"
+import { Inventory } from "../model/types";
 
 interface Props {
     inventory: Inventory,
