@@ -11,7 +11,7 @@ import router from "next/router"
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react"
 
 export const Login = () => {
-    const {setUser, checkAuth} = useAuthStore();
+    const {setUser, setAuthentication} = useAuthStore();
 
 
     const [usermame, setUsername] = useState<string>('')
@@ -28,7 +28,7 @@ export const Login = () => {
             const response = await loginAPI(usermame, password); 
             if (response.ok) {
                 setUser(response.json() as unknown as User)
-                checkAuth();
+                setAuthentication(true);
                 router.push('/success')
             }
             else {
@@ -46,7 +46,7 @@ export const Login = () => {
             <h2 className="text-3xl font-bold text-center mb-2">Login</h2>
             <Input placeholder="Username" type="text" label="Your username" value={usermame} setValue={setUsername}></Input>
             <Input placeholder="Password" type="text" label="Your password" value={password} setValue={setPassword}></Input>
-            <Button label="Login" onClick={onClickLogin} />
+            <Button label="Login" type="submit" onClick={onClickLogin} />
             <div className="p-8">
                 <p className="text-gray-700">
                     Don&apos;t have account? <Link href="/registration" className="text-blue-600 underline hover:text-blue-800">Register</Link>

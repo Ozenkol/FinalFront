@@ -1,12 +1,29 @@
 "use client"
 
-import { useAuthStore } from "@/entities/User/storage/useAuthStorage";
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useAuthStore } from "../storage/useAuthStorage"
+import { useAccountAPI } from "../api/useAccountAPI";
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
-  const {checkAuth} = useAuthStore();
+    const {setAuthentication, setUser} = useAuthStore();
+    const {getUser} = useAccountAPI();
   useEffect(() => {
-    checkAuth()
+    const  fetchUser = async () => {
+        try {
+            const response = await getUser();
+            if (!response.ok) {
+                setAuthentication(false);
+            }
+            else {
+                setAuthentication(true);
+                const json = await response.json();                
+                setUser(json)
+            }
+        } catch {
+
+        }
+    }
+    fetchUser()
   }, [])
 
   return <>{children}</>

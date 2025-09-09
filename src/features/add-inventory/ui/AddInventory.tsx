@@ -27,6 +27,7 @@ export const AddInventory = () => {
     
                 addInventory(json);
             } catch {
+                
             }
           }
         setOpen(false)

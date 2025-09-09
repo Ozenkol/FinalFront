@@ -6,7 +6,7 @@ interface Props {
 
 export const TableContainer = ({children}: Props) => {
     return (
-        <div className="relative overflow-x-auto">
+        <div className="overflow-x">
             {children}
         </div>
     )

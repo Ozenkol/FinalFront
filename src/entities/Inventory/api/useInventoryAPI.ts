@@ -1,4 +1,5 @@
 import { useRemoteAPI } from "@/shared/api/useRemoteAPI";
+import { FieldRequest } from "../model/types";
 
 const URLS = {
     USER_INVENTORIES: `${process.env.NEXT_PUBLIC_API_URL}/api/inventories`,
@@ -6,7 +7,7 @@ const URLS = {
     CREATE_INVENTORY: `${process.env.NEXT_PUBLIC_API_URL}/api/inventories`,
     UPDATE: (id: string)  => `${process.env.NEXT_PUBLIC_API_URL}}/api/inventories/${id}`,
 
-    ADD_FIELD: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}}/api/inventories/${id}/fields`,
+    ADD_FIELD: (id: string) => `${process.env.NEXT_PUBLIC_API_URL}/api/inventories/${id}/fields`,
 }
 
 export const useInventoryAPI = () => {
@@ -23,10 +24,15 @@ export const useInventoryAPI = () => {
     const removeInventory = (id: string) => {
         return remove(URLS.INVENTORY(id));
     }
+
+    const createField = (id: string, field: FieldRequest) => {
+        return post(URLS.ADD_FIELD(id), {"title": field.title})
+    }
     return {
         getUserInventoryList,
         getInventory,
         createInventory,
-        removeInventory
+        removeInventory,
+        createField
     }
 }

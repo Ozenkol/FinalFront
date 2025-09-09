@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 
 const InventoriesPage = () => {
 
-    const {isAuthenticated, checkAuth} = useAuthStore()
+    const {isAuthenticated, setAuthentication} = useAuthStore()
 
     const {getUserInventoryList} = useInventoryAPI()
     const {inventories, addInventory, setInventories} = useInventoryStore()
@@ -22,11 +22,6 @@ const InventoriesPage = () => {
 
 
     useEffect(() => {
-        if (!isAuthenticated) {
-            console.log(isAuthenticated);
-            router.push("/not-login")
-        }
-
         const fetchData = async () => {
             setLoading(true)
             try {
@@ -40,6 +35,10 @@ const InventoriesPage = () => {
     
                 setInventories(json);
                 setLoading(false);
+                if (!isAuthenticated) {
+                    console.log(isAuthenticated);
+                    router.push("/not-login")
+                }
             } catch {
                 setLoading(false)
                 setError(true)

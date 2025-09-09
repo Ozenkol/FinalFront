@@ -6,7 +6,7 @@ interface Props {
 
 export const Table = ({children}: Props) => {
     return (
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 border-gray-400">
+      <table className="table-auto overflow-scroll mb-5 w-full text-sm text-left rtl:text-right text-gray-500 border-gray-400">
         {children}
       </table>
 

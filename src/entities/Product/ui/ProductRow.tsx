@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const ProductRaw = ({product}: Props) => {
+    console.log(product)
     return (
         <TableRow>
             <TableCell>{product.title}</TableCell>

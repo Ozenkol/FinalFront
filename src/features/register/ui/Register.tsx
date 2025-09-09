@@ -39,7 +39,7 @@ export const Register = () => {
             <Input placeholder="Username" type="text" label="Your username" value={usermame} setValue={setUsername}></Input>
             <Input placeholder="Email" type="text" label="Your email" value={email} setValue={setEmail}></Input>
             <Input placeholder="Password" type="text" label="Your password" value={password} setValue={setPassword}></Input>
-            <Button label="Register" onClick={onClickLogin} />
+            <Button type="submit" label="Register" onClick={onClickLogin} />
             {isLoading && <Loader/>}
             {isError && <Alert label="Error"/>}
         </Form>

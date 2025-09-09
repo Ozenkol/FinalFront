@@ -5,15 +5,10 @@ import Cookies from 'js-cookie'
 
 export const useAuthStore = create<AuthState>((set) => ({
     user: null,
-    isAuthenticated: false,
+    isAuthenticated: true,
   
-    checkAuth: () => {
-      const token = Cookies.get('.AspNetCore.Application.Id')
-      if (token) {
-        set({ isAuthenticated: true })
-      } else {
-        set({ isAuthenticated: false, user: null })
-      }
+    setAuthentication: (auth: boolean) => {
+      set({ isAuthenticated: auth });
     },
     setUser: (user: User) => {
         set({user: user})

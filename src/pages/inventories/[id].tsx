@@ -13,7 +13,6 @@ const Post = () => {
       <Container>
         <h1 className="text-3xl font-bold text-center">Inventory products</h1>
         <ProductTable id={normalizedId}>
-      
         </ProductTable>
       </Container>
     );

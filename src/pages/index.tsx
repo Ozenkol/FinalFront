@@ -3,12 +3,13 @@ import { Login } from "@/features/login/ui/Login"
 import { Register } from "@/features/register/ui/Register"
 import { Button } from "@/shared/ui/Button/Button"
 import { Card } from "@/shared/ui/Card/Card"
+import Link from "next/link"
 import { usePathname } from "next/navigation"
 import router from "next/router"
 import { useEffect } from "react"
 
 const Landing = () => {
-    const {isAuthenticated} = useAuthStore()
+    const {isAuthenticated, user} = useAuthStore()
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -19,8 +20,13 @@ const Landing = () => {
                             <h1 className="text-xl font-semibold">ItransitionCMS</h1>
                         </a>
                     </div>
-                    {isAuthenticated ? <>Hello new user</> : <></>}
                 </nav>
+                <div className="ml-auto flex items-center">
+                        {isAuthenticated ? <>Hello {user?.username}</> : <></>}
+                    </div>
+                    <div className="ml-auto flex items-center">
+                        {isAuthenticated ? <Link href="/login">Logout</Link> : <Link href="/login">Login</Link>}
+                    </div>
             </header>      
             <main className="flex-1 flex flex-col justify-center items-center text-center p-8">
                 <h2 className="text-5xl font-extrabold leading-tight mb-4">

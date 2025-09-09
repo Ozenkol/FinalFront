@@ -20,7 +20,7 @@ export const Input = ({placeholder='', label, type = 'text', value, setValue}: P
 
     return (
     <div className="mb-5">
-        {label && <label htmlFor="password" className={label_shared}>{label}</label>}
+        {label && <label className={label_shared}>{label}</label>}
         <input className={input_shared} placeholder={placeholder} type={type} value={value} onChange={onChange}/>
     </div>
     

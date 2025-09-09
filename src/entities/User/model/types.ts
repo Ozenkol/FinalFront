@@ -5,7 +5,7 @@ export interface User {
 export interface AuthState {
     user: User | null
     isAuthenticated: boolean
-    checkAuth: () => void
+    setAuthentication: (auth: boolean) => void
     setUser: (user: User) => void
 }
   

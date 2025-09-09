@@ -1,8 +1,10 @@
 import { create } from "zustand";
-import { InventoryStore } from "../model/types";
+import { Field, InventoryStore } from "../model/types";
 
 export const useInventoryStore = create<InventoryStore>((set, get) => ({
     inventories: [],
+    inventory: null,
+    fields: [],
   
     addInventory: (item) => {
       set((state) => ({
@@ -27,7 +29,20 @@ export const useInventoryStore = create<InventoryStore>((set, get) => ({
     getInventory: (id) => {
       return get().inventories.find((item) => item.id === id);
     },
+
+    setInventory: (inventory) => set({inventory}),
+
   
     setInventories: (inventories) => set({ inventories }),
+
+    addField: (field: Field) =>{
+      set((state) => ({
+        fields: [...state.fields, field],
+      }));
+    },
+
+    setFields: (fields) => set({fields})
+
+
   }));
   
